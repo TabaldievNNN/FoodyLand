@@ -1,11 +1,12 @@
 
 
-
+import "swiper/css";
 import Button from '../UI/Button/Button'
 import styles from './Categories.module.css'
 import {useState , useEffect} from 'react'
+import { Swiper, SwiperSlide } from "swiper/react";
 const URL = "https://www.themealdb.com/api/json/v1/1/categories.php"
-const Categories = () => {
+const Categories = (props) => {
     const [categories, setCategories] = useState([])
     useEffect(() => {
         const fetchCategories = async () => {
@@ -29,13 +30,27 @@ const Categories = () => {
             </h2>
             <Button txtColor = "black" bgColor = "#E7FAFE" text="View All Categories"/>
         </div>
-        <div className={styles.categoriesCards}>
+        <div className={styles.cards}>
+        <Swiper className="mySwiper"
+        slidesPerView={6}
+        spaceBetween={40}
+
+        onSlideChange={({activeIndex}) => {
+            console.log(categories [activeIndex]);
+        }}
+        >
             {categories.map(item => (
-                <div key={item.id}>
+                <SwiperSlide key={item.id}>
+                <div className={styles.card} onClick={() =>{
+                    console.log(item.strCategory);
+                    props.setCategory(item.strCategory);
+                }} >
                     <img src={item.strCategoryThumb} alt="" />
                     <h3>{item.strCategory}</h3>
                 </div>
+        </SwiperSlide>
             ))}
+      </Swiper>
         </div>
     </div>
   )

@@ -8,3 +8,35 @@
     padding-top: 160px;
     padding-bottom: 183px;
 }
+.categoriesCards{
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.card{
+    background: linear-gradient(to bottom,
+            rgba(112, 130, 70, 0),
+            rgba(231, 250, 254, 1));
+    border-radius: 16px;
+    width: 180px;
+    height: 202px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    padding: 0 40px 30px 40px;
+    img{
+        width: 120px;
+        height: 100px;
+    }
+    h3{
+        font-size: 18px;
+    }
+}
+
+.cards{
+    padding-top: 80px;
+    
+}
